@@ -4,11 +4,8 @@ const Mines = dynamic(() => import("@/components/mines"), { ssr: false });
 
 export default function Page() {
     return (
-        <div className="flex flex-row justify-between text-center">
-            <Sidebar />
-            <div className="justify-center w-full flex-col text-center pt-8">
+        <div className="text-center w-full flex justify-center">
                 <Mines />
-            </div>
         </div>
     );
 }

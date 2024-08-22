@@ -18,7 +18,7 @@ function Number({coinAmount}: {coinAmount: number}) {
   });
 
   const formatNumber = (val: number) => new Intl.NumberFormat('en-US').format(Math.floor(val));
-  return (<animated.div className="text-black text-xl">{countAnimation.number.to(val => formatNumber(val))}</animated.div>);
+  return (<animated.div className=" text-base">{countAnimation.number.to(val => formatNumber(val))}</animated.div>);
 }
 
 export default function UserCurrency() {
@@ -59,7 +59,7 @@ export default function UserCurrency() {
   return (
     <div className='flex font-medium'>
       <Number coinAmount={numberOfCoins}/>
-      <p className="text-black ml-2 text-xl">coins</p>
+      <p className="ml-1 text-base">coins</p>
     </div>
   )
 }

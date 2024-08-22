@@ -5,6 +5,8 @@ import MinesBoard from "./minesBoard";
 import { addCoins } from "@/lib/addCoins";
 import { useAuth } from "@clerk/nextjs";
 import getCoinAmount from "@/lib/getCoinAmount";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const TOTAL_TILES = 25;
 
@@ -100,26 +102,26 @@ const Mines: React.FC = () => {
     return(
         <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col md:flex-row justify-center items-start space-y-8 md:space-y-0 md:space-x-4">
-                <div className="w-full md:w-96 p-4 bg-gray-100 rouded-lg">
+                <div className="w-full md:w-96 p-4 bg-accent rounded-lg rouded-lg">
                     <div className="mb-8">
                         <label htmlFor="lavaCount" className="block mb-2 text-left">Number of bombs</label>
-                        <input
+                        <Input 
                             id="lavaCount"
                             type="number"
                             value={lavaCount}
                             onChange={handleLavaCountChange}
-                            className="w-full px-2 border border-gray-300 rounded"
+                            className="w-full px-2 border rounded-lg"
                             disabled={isGameStarted}
                         />
                     </div>
                     <div className="mb-8">
                         <label htmlFor="betAmount" className="block mb-2 text-left">Bet amount</label>
-                        <input
+                        <Input 
                             id="betAmount"
                             type="number"
                             value={betAmount}
                             onChange={handleBetAmountChange}
-                            className="w-full px-2 border border-gray-300 rounded"
+                            className="w-full px-2 border rounded"
                             disabled={isGameStarted}
                         />
                     </div>
@@ -139,31 +141,31 @@ const Mines: React.FC = () => {
                             <div className="text-xl mb-4">You won {currentWinnings.toFixed(2)}</div>
                         )}
                     </div>
-                    <button
-                        onClick={
+
+                    <Button onClick={
                             !isGameStarted
                                 ? handleStartGame
                                 : currentWinnings > parseFloat(betAmount)
                                 ? handleCashOut
                                 : undefined
-                        }
-                        className={`w-full px-4 py-2 rounded ${
-                            !isGameStarted
-                                ? "bg-blue-500 hover:bg-blue-700 text-white font-bold"
-                                : currentWinnings > parseFloat(betAmount)
-                                ? "bg-green-500 hover:bg-green-700 text-white font-bold"
-                                : "bg-gray-300 text-gray-500"
-                        }`}
-                        disabled={
-                            isGameStarted && currentWinnings <= parseFloat(betAmount)
-                        }
-                    >
-                        {!isGameStarted
+                            }
+                            className={`w-full px-4 py-2 rounded ${
+                                !isGameStarted
+                                    ? "bg-ring text-white font-bold"
+                                    : currentWinnings > parseFloat(betAmount)
+                                    ? "bg-green-500 hover:bg-green-700 text-white font-bold"
+                                    : "bg-gray-300 text-gray-500"
+                            }`}
+                            disabled={
+                                isGameStarted && currentWinnings <= parseFloat(betAmount)
+                            }>
+
+                            {!isGameStarted
                             ? "Start Game"
                             : currentWinnings > parseFloat(betAmount)
                             ? "Cash Out"
                             : "Waiting to uncover tile"}
-                    </button>
+                    </Button>
 
                 </div>
 

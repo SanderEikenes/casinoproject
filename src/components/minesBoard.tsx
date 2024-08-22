@@ -76,7 +76,7 @@ const MinesBoard: React.FC<minesBoardProps> = ({
 
     return(
         <div className='w-full max-w-xl mx-auto'>
-            <div className='grid grid-cols-5 sm:grid-cols-5 gap-1 sm:gap-2 md:gap-3 bg-gray-200 p-8 sm:p-3 md:p-8 md:px-16 rounded-lg'>
+            <div className='grid grid-cols-5 sm:grid-cols-5 gap-1 sm:gap-2 md:gap-3 bg-accent p-8 sm:p-3 md:p-8 md:px-16 rounded-lg'>
                 {gameState.map((state, index) => (
                     <div
                         key={index}
