@@ -1,7 +1,7 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import { addNewUser, deleteUser } from '@/lib/handleUsers'
+import supabase from '@/lib/supabase'
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -56,13 +56,23 @@ export async function POST(req: Request) {
 
   if (eventType === 'user.created') {
     console.log('User created with id: ', evt.data.id)
-    addNewUser(evt.data.id)
+    const { error } = await supabase
+    .from('currencylist')
+    .insert([{ clerk_id: evt.data.id, coins: 0 }])
+    if (error) {
+      console.error('Error adding user to database:', error)
+    } else {
+      console.log('User added to database with ID: ', evt.data.id)
+    }
   }
 
   if (eventType === 'user.deleted') {
     console.log('User deleted with id: ', evt.data.id)
     if (evt.data.id) {
-      deleteUser(evt.data.id)
+      const { error } = await supabase
+        .from('currencylist')
+        .delete()
+        .eq('clerk_id', evt.data.id)
     } else {
       console.error('Invalid user ID')
     }
