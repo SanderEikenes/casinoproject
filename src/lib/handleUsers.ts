@@ -6,9 +6,7 @@ export async function addNewUser(userId: string) {
     .from('currencylist')
     .insert([{ clerk_id: userId, coins: 0 }])
     
-    if (error){
-        console.log("Add Error: ", error)
-    }
+    console.log("Add Error: ", error)
 
     console.log('User added to database. ID: ' + userId)
     return;
