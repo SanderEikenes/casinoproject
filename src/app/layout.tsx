@@ -12,6 +12,7 @@ import Nav from "@/components/nav";
 import { ThemeProvider } from "@/components/theme-provider"
 import Chat from "@/components/chat";
 import Sidebar from "@/components/sidebar";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
       <ClerkProvider>
         
         <html lang="en"> 
-          <body className={`flex justify-between ${inter.className}`}>
+          <body className={`flex ${inter.className}`}>
             <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -39,9 +40,12 @@ export default function RootLayout({
 
             <div className="flex-col flex flex-grow">
               <Nav />
-              <div className="flex justify-between">
+              <div className="flex">
                 <Sidebar />
-                {children}
+                <div className="w-full justify-between flex flex-col">
+                  {children}
+                  <Footer />
+                </div>
               </div>
             </div>
 

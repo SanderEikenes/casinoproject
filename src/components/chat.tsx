@@ -14,7 +14,7 @@ import { Input } from "./ui/input"
 
 export default function Chat() { 
     return(
-        <div className="flex flex-col bg-secondary p-4 rounded-lg my-4 mx-4">
+        <div className="flex flex-col w-4/12 bg-secondary p-4 rounded-lg my-4 mx-4">
             <div className="my-4">
                 <h1 className="flex gap-2"><Users size={24}/>CHAT</h1>
                 <p className="flex gap-1 items-center text-ring"><User size={16}/> 50 players online</p>

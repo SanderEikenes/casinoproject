@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Sidebar() {
     return (
-        <div className="mx-4 p-4 h-full rounded-lg bg-secondary">
+        <div className="mx-4 p-4 h-full w-min rounded-lg bg-secondary">
             <ul className='items-center text-center flex flex-col gap-y-12'>
             
             <li>

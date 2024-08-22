@@ -10,6 +10,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { currentUser } from "@clerk/nextjs/server";
 import { Wallet, Dices, Dumbbell, PlusSquare } from 'lucide-react';
+import { Button } from './ui/button';
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+  } from "@/components/ui/popover"
+import CoinBank from './coinBank';
+  
 
 async function getUserInfo() {
     const user = await currentUser()
@@ -63,9 +71,15 @@ export default async function Nav() {
                                 <p>Blance</p>
                                 <UserCurrency />
                             </div>
-                            <Link href='/deposit'>
-                                <PlusSquare size={28} className='mx-4'/>
-                            </Link>
+
+                            <Popover>
+                                <PopoverTrigger>
+                                <PlusSquare size={28} className='mx-4 hover:scale-125 transition-transform duration-200'/>
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                    <CoinBank />
+                                </PopoverContent>
+                            </Popover>
 
                         </li>
                         </SignedIn>

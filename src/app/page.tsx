@@ -4,6 +4,7 @@ import { ClerkProvider, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Sidebar from "@/components/sidebar";
 import Chat from "@/components/chat";
+import Games from "@/components/games";
 
 async function getUserInfo() {
   const user = await currentUser()
@@ -23,15 +24,16 @@ export default async function Home() {
   const userInfo = await getUserInfo();
 
   return (
-    <main className="text-center w-full flex justify-center">
-        <div className="justify-center flex text-center pt-8">
+    <main className="w-full flex flex-col justify-center">
+        <div className="w-full flex pt-8 px-8">
           <SignedOut>
-            <h1 className="flex gap-2 text-4xl justify-center">Welcome to the casino</h1>
+            <h1 className="gap-2 text-4xl">Popular games</h1>
           </SignedOut>
           <SignedIn>
-            <h1 className="flex gap-2 text-4xl justify-center">Welcome, {userInfo?.username}!</h1>
+            <h1 className="gap-2 text-4xl">Popular games</h1>
           </SignedIn>
         </div>
+        <Games />
     </main>
   );
 }

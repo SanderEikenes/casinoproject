@@ -2,7 +2,9 @@
 
 import { addCoins } from "@/lib/addCoins"
 import { useAuth } from '@clerk/nextjs'
+import { Input } from "./ui/input";
 import { use } from "react"
+import { Button } from "./ui/button";
 
 export default function CoinBank() {
     const { userId } = useAuth()
@@ -16,8 +18,8 @@ export default function CoinBank() {
 
     return (
         <div>
-            <input type="text" id="coinAmount" placeholder="Enter amount" />
-            <button onClick={addCoinsHere}>Add Coins</button>
+            <Input type="text" id="coinAmount" placeholder="Enter amount" />
+            <Button onClick={addCoinsHere} className="mt-4">Add Coins</Button>
         </div>
     )
 }
