@@ -39,8 +39,8 @@ export default function Games() {
         <div className="w-full flex my-8 justify-between px-8">
 
             {games.map((game) => (
-                <div className="rounded-lg w-auto h-full overflow-hidden">
-                    <Image key={game.id} src={game.image} width={200} height={200} alt={game.title} />
+                <div key={game.id} className="rounded-lg w-auto h-full overflow-hidden">
+                    <Image  src={game.image} width={200} height={200} alt={game.title} />
                 </div>
             ))}
         </div>
