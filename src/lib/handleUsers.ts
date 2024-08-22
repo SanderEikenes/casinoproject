@@ -1,22 +1,20 @@
 import supabase from '@/lib/supabase'
 
-export async function addNewUser(userId: string) {
-    console.log("Is this ever ran???");
+export async function addNewUser(clerkUserId: string) {
     try {
-        const { data, error } = await supabase
-            .from('currencylist')
-            .insert([{ clerk_id: userId, coins: 0 }]);
-        
-        if (error) {
-            console.error("Add Error: ", error);
-        } else {
-            console.log('User added to database. ID: ' + userId, data);
-        }
+      const { error } = await supabase
+        .from('currencylist')  // Replace with your actual table name
+        .insert([{ clerk_id: clerkUserId, coins: 0 }]);
+  
+      if (error) {
+        console.error('Error inserting new user into Supabase:', error);
+      } else {
+        console.log('New user added to Supabase with Clerk ID:', clerkUserId);
+      }
     } catch (err) {
-        console.error("Unexpected Error: ", err);
+      console.error('Unexpected error when adding new user:', err);
     }
-    return;
-}
+  }
 
 export async function deleteUser(userId: string) {
     console.log("Is this ever ran??? Deleted")
