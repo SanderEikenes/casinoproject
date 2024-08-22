@@ -38,7 +38,7 @@ export default async function Nav() {
             <nav className="items-center justify-between flex mx-4 my-4">
                 <div className='flex items-center'>
                     <Link className='flex items-center' href="/">
-                        <h1 className='text-2xl font-bold'>Mango</h1>
+                        <Image src='/logo.png' width={100} height={100} alt='logo'/>
                     </Link>
                     <ul className='flex gap-4 mx-16 text-xl font-medium'>
                             <li>

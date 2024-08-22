@@ -8,7 +8,7 @@ const games =  [
     },
     {
     id: 2,
-    image: "/minesposter.png",
+    image: "/coinflipposter.png",
     title: "Coinflip",
     },
     {
@@ -18,7 +18,7 @@ const games =  [
     },
     {
     id: 4,
-    image: "/minesposter.png",
+    image: "/coinflipposter.png",
     title: "Coinflip",
     },
     {
@@ -28,7 +28,7 @@ const games =  [
     },
     {
     id: 6,
-    image: "/minesposter.png",
+    image: "/coinflipposter.png",
     title: "Coinflip",
     },
 ]
