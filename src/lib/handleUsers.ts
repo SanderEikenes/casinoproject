@@ -1,6 +1,7 @@
 import supabase from '@/lib/supabase'
 
 export async function addNewUser(userId: string) {
+    console.log("Is this ever ran???")
     const { error } = await supabase
         .from('currencylist')
         .insert([{ clerk_id: userId, coins: 50 }])
@@ -9,6 +10,7 @@ export async function addNewUser(userId: string) {
 }
 
 export async function deleteUser(userId: string) {
+    console.log("Is this ever ran??? Deleted")
     const { error } = await supabase
         .from('currencylist')
         .delete()
