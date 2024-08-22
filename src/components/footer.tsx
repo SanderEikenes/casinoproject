@@ -13,17 +13,17 @@ export default function Footer() {
             <div className="mx-8">
                 <h3 className="text-xl font-bold">About</h3>
                 <ul>
-                    <li><Link href="/about">About us</Link></li>
-                    <li><Link href="/contact">Contact us</Link></li>
-                    <li><Link href="/careers">Careers</Link></li>
+                    <li><Link href="/">About us</Link></li>
+                    <li><Link href="/">Contact us</Link></li>
+                    <li><Link href="/">Careers</Link></li>
                 </ul>
             </div>
             <div className="mx-8">
                 <h3 className="text-xl font-bold">Help</h3>
                 <ul>
-                    <li><Link href="/about">About us</Link></li>
-                    <li><Link href="/contact">Contact us</Link></li>
-                    <li><Link href="/careers">Careers</Link></li>
+                    <li><Link href="/">About us</Link></li>
+                    <li><Link href="/">Contact us</Link></li>
+                    <li><Link href="/">Careers</Link></li>
                 </ul>
             </div>
             <div className="w-5/12">
