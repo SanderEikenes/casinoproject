@@ -1,10 +1,10 @@
 import supabase from '@/lib/supabase'
 
-export async function addNewUser(userId: string) {
+export async function addNewUser(userId: string, username: string) {
     console.log('User added with ID: ' + userId)
     const { error } = await supabase
         .from('currencylist')
-        .insert([{ clerk_id: userId, coins: 50 }])
+        .insert([{ clerk_id: userId, coins: 50, username: username }])
     return;
 }
 

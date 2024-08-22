@@ -57,7 +57,11 @@ export async function POST(req: Request) {
 
   if (eventType === 'user.created') {
     console.log('User created with id: ', evt.data.id)
-    addNewUser(evt.data.id)
+    console.log('User created with username: ', evt.data.username)
+    if (evt.data.id && evt.data.username){
+      addNewUser(evt.data.id, evt.data.username)
+    }
+    
   }
 
   if (eventType === 'user.deleted') {
