@@ -28,13 +28,11 @@ async function getUserInfo() {
       firstName: user.firstName,
       lastName: user.lastName,
       imageUrl: user.imageUrl,
-      username: user.username,
     };
     return userData;
   }
 
 export default async function Nav() {
-    const userInfo = await getUserInfo();
     return (
         <header>
             <nav className="items-center justify-between flex mx-4 my-4">

@@ -53,15 +53,10 @@ export async function POST(req: Request) {
   const { id } = evt.data
   const eventType = evt.type
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-  console.log('Webhook body:', body)
 
   if (eventType === 'user.created') {
     console.log('User created with id: ', evt.data.id)
-    console.log('User created with username: ', evt.data.username)
-    if (evt.data.id && evt.data.username){
-      addNewUser(evt.data.id, evt.data.username)
-    }
-    
+    addNewUser(evt.data.id)
   }
 
   if (eventType === 'user.deleted') {
