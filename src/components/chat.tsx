@@ -54,6 +54,7 @@ export default function Chat() {
         .from('chatmessages')
         .insert([{ chat_content: message, clerk_id: userId, username: user?.username, profileimage: user?.imageUrl }])
         console.log("Error: ", error)
+        setChatMessage("")
     }
 
     const handleChatMessageChange = (e: any) => {
@@ -81,7 +82,19 @@ export default function Chat() {
 
             <div className="my-4 flex items-center gap-2">
                 <div className="flex h-16 items-center w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                    <Input placeholder="Type your message here" disabled={!user} id="chatMessage" className="border-0" onChange={handleChatMessageChange} value={chatMessage}/>
+                    <Input 
+                        placeholder="Type your message here" 
+                        disabled={!user} 
+                        id="chatMessage" 
+                        className="border-0" 
+                        onChange={handleChatMessageChange} 
+                        value={chatMessage}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              sendChatMessage();
+                            }
+                          }}
+                    />
                     <Button onClick={sendChatMessage} className="bg-transparent hover:bg-transparent hover: text-white hover:scale-125 transition-transform duration-200 font-semibold px-4 py-2 rounded-md"><Send size={24} className="text-ring mx-4"/></Button>
                     
                 </div>
