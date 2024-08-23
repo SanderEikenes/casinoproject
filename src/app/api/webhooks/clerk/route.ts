@@ -58,7 +58,7 @@ export async function POST(req: Request) {
     console.log('User created with id: ', evt.data.id)
     const { error } = await supabase
     .from('currencylist')
-    .insert([{ clerk_id: evt.data.id, coins: 0 }])
+    .insert([{ clerk_id: evt.data.id, coins: 0, username: evt.data.username }])
     if (error) {
       console.error('Error adding user to database:', error)
     } else {
