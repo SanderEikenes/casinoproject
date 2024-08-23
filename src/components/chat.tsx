@@ -15,6 +15,7 @@ import { UserCircle, Users, User, Send } from "lucide-react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { useEffect, useState } from "react"
+import Image from "next/image";
   
 
 export default function Chat() { 
@@ -51,7 +52,7 @@ export default function Chat() {
         if (!message) return;
         const { error } = await supabase
         .from('chatmessages')
-        .insert([{ chat_content: message, clerk_id: userId, username: user?.username }])
+        .insert([{ chat_content: message, clerk_id: userId, username: user?.username, profileimage: user?.imageUrl }])
         console.log("Error: ", error)
     }
 
@@ -69,7 +70,7 @@ export default function Chat() {
             <div>
                 {messages.slice(-5).map((message: any, index: any) => (
                     <Card key={index}>
-                        <CardTitle className="text-base font-semibold flex items-center gap-2 p-4"><UserCircle size={24} /> {message.username}</CardTitle>
+                        <CardTitle className="text-base font-semibold flex items-center gap-2 p-4"><Image src={message.profileimage} alt="profileimage" width={28} height={28} className="rounded-full"/> {message.username}</CardTitle>
                         <CardContent>
                             <p>{message.chat_content}</p>
                         </CardContent>
