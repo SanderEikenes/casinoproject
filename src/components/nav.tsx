@@ -82,9 +82,7 @@ export default async function Nav() {
                         </li>
                         </SignedIn>
                         <SignedOut>
-                        <li>
-                            <SignInButton />
-                        </li>
+                            <Button><SignInButton /></Button>
                         </SignedOut>
                     </div>
                 </div>
