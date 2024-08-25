@@ -30,7 +30,7 @@ export default function RootLayout({
 
       <ClerkProvider>
         
-        <html lang="en"> 
+        <html lang="en" suppressHydrationWarning> 
           <body className={`flex ${inter.className}`}>
             <ThemeProvider
             attribute="class"

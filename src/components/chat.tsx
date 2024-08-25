@@ -14,7 +14,7 @@ import supabase from '@/lib/supabase'
 import { UserCircle, Users, User, Send } from "lucide-react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image";
   
 
@@ -23,6 +23,7 @@ export default function Chat() {
     const { userId } = useAuth()
     const {user} = useUser();
     const [messages, setMessages] = useState<any>([])
+    const last25Messages = messages.slice(-25);
 
     supabase
     .channel('realtime:chatmessages')
@@ -62,22 +63,24 @@ export default function Chat() {
     }
 
     return(
-        <div className="flex flex-col w-4/12 bg-secondary p-4 rounded-lg my-4 mx-4">
+        <div className="flex flex-col w-4/12 bg-secondary h-full p-4 rounded-lg my-4 mx-4 sticky top-0 fixed">
             <div className="my-4">
                 <h1 className="flex gap-2"><Users size={24}/>CHAT</h1>
                 <p className="flex gap-1 items-center text-ring"><User size={16}/> 50 players online</p>
             </div>
 
-            <div>
-                {messages.slice(-5).map((message: any, index: any) => (
+            <div className="scrollable-container" style={{ maxHeight: '550px', overflowY: 'auto' }}>
+                {last25Messages.map((message: any, index: any) => (
                     <Card key={index}>
-                        <CardTitle className="text-base font-semibold flex items-center gap-2 p-4"><Image src={message.profileimage} alt="profileimage" width={28} height={28} className="rounded-full"/> {message.username}</CardTitle>
+                        <CardTitle className="text-base font-semibold flex items-center gap-2 p-4">
+                            <Image src={message.profileimage} alt="profileimage" width={28} height={28} className="rounded-full" /> 
+                            {message.username}
+                        </CardTitle>
                         <CardContent>
                             <p>{message.chat_content}</p>
                         </CardContent>
                     </Card>
                 ))}
-
             </div>
 
             <div className="my-4 flex items-center gap-2">

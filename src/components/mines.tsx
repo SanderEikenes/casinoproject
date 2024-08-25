@@ -4,9 +4,11 @@ import React, { useState, useCallback, use } from "react";
 import MinesBoard from "./minesBoard";
 import { addCoins } from "@/lib/addCoins";
 import { useAuth } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import getCoinAmount from "@/lib/getCoinAmount";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import updateLiveFeed from "@/lib/updateLiveFeed";
 
 const TOTAL_TILES = 25;
 
@@ -18,6 +20,7 @@ const Mines: React.FC = () => {
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const { userId } = useAuth()
+    const {user} = useUser();
 
     const calculateProbability = useCallback(
         (safeClicks: number) => {
@@ -88,6 +91,8 @@ const Mines: React.FC = () => {
             setIsGameStarted(false);
             if (!userId) return;
             addCoins(userId, Math.round(currentWinnings));
+            console.log("Adding to livefeed...");
+            updateLiveFeed("Mines", user?.imageUrl, user?.username, betAmount, currentWinnings);
         }
     };
 

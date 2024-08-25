@@ -5,6 +5,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import Sidebar from "@/components/sidebar";
 import Chat from "@/components/chat";
 import Games from "@/components/games";
+import LiveFeed from "@/components/liveFeed";
 
 export default async function Home() {
   return (
@@ -18,6 +19,7 @@ export default async function Home() {
           </SignedIn>
         </div>
         <Games />
+        <LiveFeed />
     </main>
   );
 }

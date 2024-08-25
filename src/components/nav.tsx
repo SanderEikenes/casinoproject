@@ -34,7 +34,7 @@ async function getUserInfo() {
 
 export default async function Nav() {
     return (
-        <header>
+        <header className=''>
             <nav className="items-center justify-between flex mx-4 my-4">
                 <div className='flex items-center'>
                     <Link className='flex items-center' href="/">
