@@ -28,10 +28,6 @@ You can try out the Casino Project here: [Casino Project on Vercel](https://casi
 
 Contributions are welcome! If you have any suggestions, bug reports, or want to help add new features, feel free to open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the MIT License.
-
 ---
 
 Thank you for reading! 🎰
